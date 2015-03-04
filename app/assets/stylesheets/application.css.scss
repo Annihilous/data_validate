@@ -14,3 +14,11 @@
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+.btn {
+	vertical-align: center !important;
+    position:relative;
+    color:red;
+    margin-top: 10%;
+
+}

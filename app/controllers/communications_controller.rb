@@ -1,16 +1,7 @@
 class CommunicationsController < ApplicationController
+  before_action :all_communications, only: [:index, :create]
   before_action :set_communication, only: [:show, :edit, :update, :destroy]
 
-  # GET /communications
-  # GET /communications.json
-  def index
-    @communications = Communication.all
-  end
-
-  # GET /communications/1
-  # GET /communications/1.json
-  def show
-  end
 
   # GET /communications/new
   def new
@@ -25,16 +16,6 @@ class CommunicationsController < ApplicationController
   # POST /communications.json
   def create
     @communication = Communication.new(communication_params)
-
-    respond_to do |format|
-      if @communication.save
-        format.html { redirect_to @communication, notice: 'Communication was successfully created.' }
-        format.json { render :show, status: :created, location: @communication }
-      else
-        format.html { render :new }
-        format.json { render json: @communication.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /communications/1
@@ -63,6 +44,9 @@ class CommunicationsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def all_communications
+      @communications = Communication.all
+    end
     def set_communication
       @communication = Communication.find(params[:id])
     end
