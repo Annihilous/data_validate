@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  resources :communications
+
   root 'welcome#index'
 
-  get 'welcome/codex'
+  get 'codex' => 'welcome#codex'
 
   devise_for :users
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
